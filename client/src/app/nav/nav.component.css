@@ -1,0 +1,13 @@
+.dropdown-toggle, .dropdown-item{
+cursor:pointer;
+
+}
+
+.dropdown-menu{
+    background-color: #f9f9f9;
+}
+
+.dropdown-item a:hover {
+    background-color: #ddd;
+    
+}

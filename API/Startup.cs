@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using API.Extensions;
+using API.Middleware;
 
 namespace API
 {
@@ -47,16 +48,23 @@ namespace API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
+            app.UseMiddleware<ExceptionMiddleware>();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseCors(x => x.AllowAnyMethod()
-                              .WithOrigins("https://localhost:4200")
-                              .AllowAnyHeader());
+            /*app.UseCors(x => x.AllowAnyMethod()
+                             .WithOrigins("https://localhost:4200")
+                             .AllowAnyHeader());
 
                               //.AllowAnyOrigin()
-                              //.AllowAnyMethod()
+                              //.AllowAnyMethod()*/
+            app.UseCors(x => x.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+                .WithOrigins("https://localhost:4200"));
+
 
             app.UseAuthentication();
             app.UseAuthorization();

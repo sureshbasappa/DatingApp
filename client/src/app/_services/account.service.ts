@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { User } from '../_models/user';
+import { clear } from 'node:console';
 
 
 
@@ -15,20 +16,15 @@ export class AccountService {
 private currentUserSource = new ReplaySubject<User>(1);
 currentUsers$ = this.currentUserSource.asObservable();
 
-
-
-
-
   constructor(private http:HttpClient) { }
   
-  login(model:User){
+  login(model:any){
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
-      map((response:any)=>{
-        const User = response;
-        if(User){
-          localStorage.setItem('User', JSON.stringify(User));
-          this.currentUserSource.next(User);
-          console.log(User);
+      map((response:User)=>{
+        const user = response;
+        if(user){
+          localStorage.setItem('user', JSON.stringify(user));
+          this.currentUserSource.next(user);
         }
       })
     )
@@ -38,7 +34,7 @@ registor(model:any){
     return this.http.post(this.baseUrl+'account/register', model).pipe(
       map((user:any)=>{
         if(user){
-          localStorage.setItem('User', JSON.stringify(user))
+          localStorage.setItem('user', JSON.stringify(user))
           this.currentUserSource.next(user);
         }
         return user;
@@ -51,7 +47,8 @@ this.currentUserSource.next(user);
   }
 
   logout(){
-    this.currentUserSource.next();
+    localStorage.removeItem('user');
+    this.currentUserSource.next(null);
   }
 
 }

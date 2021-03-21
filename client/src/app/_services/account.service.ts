@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { User } from '../_models/user';
 import { clear } from 'node:console';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -12,7 +13,7 @@ import { clear } from 'node:console';
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl ='https://localhost:5001/api/';
+  baseUrl =environment.apiUrl;
 private currentUserSource = new ReplaySubject<User>(1);
 currentUsers$ = this.currentUserSource.asObservable();
 
@@ -32,7 +33,7 @@ currentUsers$ = this.currentUserSource.asObservable();
 
 registor(model:any){
     return this.http.post(this.baseUrl+'account/register', model).pipe(
-      map((user:any)=>{
+      map((user:User)=>{
         if(user){
           localStorage.setItem('user', JSON.stringify(user))
           this.currentUserSource.next(user);

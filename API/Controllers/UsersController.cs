@@ -33,11 +33,11 @@ namespace API.Controllers
         }
         //Api/users/1
 
-        [HttpGet("{username}")]
+        [HttpGet("{userName}")]
 
-        public async Task<ActionResult<MemberDto>> GetUsers(string username)
+        public async Task<ActionResult<MemberDto>> GetUsers(string userName)
         {
-            return await _userRepository.GetMemberAsync(username);
+            return await _userRepository.GetMemberAsync(userName);
 
         }
     }

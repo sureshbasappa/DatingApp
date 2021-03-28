@@ -9,5 +9,10 @@ cursor:pointer;
 
 .dropdown-item a:hover {
     background-color: #ddd;
-    
+}
+
+img{
+    max-height: 50px;
+    border: 2px solid #fff;
+    display: inline;
 }

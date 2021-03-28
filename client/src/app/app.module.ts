@@ -28,6 +28,7 @@ import { MemberEditComponent } from './member/member-edit/member-edit.component'
 import { NgxSpinner } from 'ngx-spinner/lib/ngx-spinner.enum';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoodingInterceptor } from './_interceptors/looding.interceptor';
+import { PhotoEditorComponent } from './member/photo-editor/photo-editor.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { LoodingInterceptor } from './_interceptors/looding.interceptor';
     NotFountComponent,
     ServerErrorComponent,
     MemberCardComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    PhotoEditorComponent
   ],
   imports: [
     BrowserModule,

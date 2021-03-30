@@ -18,10 +18,7 @@ users:any;
 
 registerToggle(){
     this.registerMode= ! this.registerMode;
-    console.log(this.registerMode);
 }
-
-
 
 cancelRegistranionMode(event:boolean){
   this.registerMode=event;

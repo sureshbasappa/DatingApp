@@ -1,4 +1,5 @@
 using System.Linq;
+using API.Controllers;
 using API.Data.DTOs;
 using API.Entities;
 using API.Extensions;
@@ -18,6 +19,7 @@ namespace API.Helpers
             ));
             CreateMap<Photo, PhotoDto>();
             CreateMap<MemberUpdateDto, AppUser>();
+            CreateMap<RegisterDto, AppUser>(); 
         }
     }
 }

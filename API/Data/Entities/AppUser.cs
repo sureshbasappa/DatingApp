@@ -12,8 +12,8 @@ namespace API.Entities
         public byte[] PasswordSolt{get;set;}
         public DateTime DateOfBirth {get;set;}
         public string IsKnownAs{get;set;}
-        public DateTime Created{get;set;}
-        public DateTime LastActive{get;set;}
+        public DateTime Created{get;set;} = DateTime.Now;
+        public DateTime LastActive{get;set;} = DateTime.Now;
         public string Gender{get;set;}
         public string Interduction{get;set;}
         public string LookingFor{get;set;}

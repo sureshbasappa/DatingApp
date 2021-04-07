@@ -9,5 +9,7 @@ namespace API.Controllers
         public string PhotoUrl{get;set;}
 
          public string IsKnownAs{get;set;}
+
+         public string Gender{get;set;}
     }
 }

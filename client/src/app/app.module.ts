@@ -26,8 +26,8 @@ import { MemberEditComponent } from './member/member-edit/member-edit.component'
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoodingInterceptor } from './_interceptors/looding.interceptor';
 import { PhotoEditorComponent } from './member/photo-editor/photo-editor.component';
-import { TextInputComponent } from './_forms/text-input/text-input.component';
-import { DateInputComponent } from './_forms/date-input/date-input.component';
+
+
 
 @NgModule({
   declarations: [
@@ -45,8 +45,6 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     MemberCardComponent,
     MemberEditComponent,
     PhotoEditorComponent,
-    TextInputComponent,
-    DateInputComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +54,7 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     FormsModule,
     SharedModule,
     NgxSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi:true},

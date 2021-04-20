@@ -14,10 +14,10 @@ import { AccountService } from '../_services/account.service';
 })
 export class RegisterComponent implements OnInit {
  
-  @Output() cancelRegiser=new EventEmitter();
+  @Output() cancelRegister = new EventEmitter();
   registerForm:FormGroup;
   maxDate:Date;
-  
+
   validationErrors:string[]=[];
   
 
@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
   }
 
   cancel(){
-    this.cancelRegiser.emit('');
+    this.cancelRegister.emit('');
   }
 
 }

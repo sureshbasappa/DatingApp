@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegiser=new EventEmitter();
   registerForm:FormGroup;
   maxDate:Date;
+  
   validationErrors:string[]=[];
   
 

@@ -22,6 +22,7 @@ pageSize = 5;
 
   ngOnInit(): void {
     this.loadMessage();
+    console.log("suresh");
   }
 
   loadMessage(){

@@ -28,6 +28,7 @@ import { LoodingInterceptor } from './_interceptors/looding.interceptor';
 import { PhotoEditorComponent } from './member/photo-editor/photo-editor.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
+import { MemberMessagesComponent } from './member/member-messages/member-messages.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     PhotoEditorComponent,
     TextInputComponent,
     DateInputComponent,
+    MemberMessagesComponent,
 
   ],
   imports: [

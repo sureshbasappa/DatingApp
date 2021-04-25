@@ -11,11 +11,12 @@ import { MessageService } from '../_services/message.service';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
-messages:Message[];
+messages:Message[]=[];
 pagination:Pagination;
 continer ='Unread';
 pageNumber = 1;
 pageSize = 5;
+loading=false;
 
 
   constructor(private messageService:MessageService) { }
@@ -26,15 +27,33 @@ pageSize = 5;
   }
 
   loadMessage(){
+    this.loading=true;
     this.messageService.getMessage(this.pageNumber,this.pageSize, this.continer).subscribe(Response=>{
       this.messages=Response.result;
       this.pagination=Response.pagination;
+      this.loading=false;
     })
   }
 
-  pageChanged(event:any){
+  deleteMessage(id:number){
+    this.messageService.deleteMessage(id).subscribe(()=>{
+      this.messages.splice(this.messages.findIndex(m=>m.id==id), 1)
+    })
+  }
+
+
+  /*pageChanged(event:any){
     this.pageNumber= event.page;
     this.loadMessage();
   }
+*/
+  pageChanged(event: any){
+    if (this.pageNumber !== event.page) {
+        this.pageNumber = event.page;
+        console.log(this.pageNumber);
+        this.loadMessage();
+    }
+  }
+
 
 }

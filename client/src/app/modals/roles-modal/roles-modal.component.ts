@@ -1,6 +1,7 @@
 import { EventEmitter } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/_models/user';
 
 
@@ -15,7 +16,7 @@ export class RolesModalComponent implements OnInit {
   user:User;
   roles:any[];
 
-  constructor(public bsModalRef:BsModalRef) { }
+  constructor(public bsModalRef:BsModalRef, private toster:ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,7 @@ export class RolesModalComponent implements OnInit {
   updateRoles(){
     this.updateSelectedRoles.emit(this.roles);
     this.bsModalRef.hide();
+    this.toster.success('you have update the ' + this.user.username + ' roles');
   }
 
 }

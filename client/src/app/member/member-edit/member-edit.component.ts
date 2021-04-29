@@ -33,7 +33,7 @@ user:User;
   }
 
   loadMember(){
-    this.memberService.getMember(this.user.userName).subscribe(member=> {
+    this.memberService.getMember(this.user.username).subscribe(member=> {
       this.member=member;
       console.log(this.member);
     })

@@ -16,7 +16,8 @@ bsModalRef:BsModalRef;
   constructor(private adminService:AdminService, private modalService:BsModalService) { }
 
   ngOnInit(): void {
-  this.getUsersWithRoles();
+
+  this.getUsersWithRoles();   
   }
   getUsersWithRoles(){
   this.adminService.getUsersWithRoles().subscribe(users=>{
@@ -24,46 +25,49 @@ bsModalRef:BsModalRef;
   })
   }
 
-  openRoleModals(user:User){
-    const config = {
+  openRolesModal(user:User){ 
+      const config = {
       class:'modal-dialog-centered',
-        initialState:{
-          user,
-          roles:this.getRolesArray(user)
-        }
+      initialState: {
+        user,
+        roles: this.getRolesArray(user)
+      }
     }
+
+
     this.bsModalRef = this.modalService.show(RolesModalComponent, config);
-    this.bsModalRef.content.updateSelectedRoles.subsribe(values=>{
+    this.bsModalRef.content.updateSelectedRoles.subscribe(values => {
       const rolesToUpdate = {
-        roles: [...values.filter(el=>el.checked===true).map(el=>el.name)]
+        roles: [...values.filter(el => el.checked === true).map(el => el.name)]
       };
-      if(rolesToUpdate){
-        this.adminService.updateUserRoles(user.userName, rolesToUpdate.roles).subscribe(()=>{
-          user.roles=[...rolesToUpdate.roles]
+      if (rolesToUpdate) {
+        this.adminService.updateUserRoles(user.username, rolesToUpdate.roles).subscribe(() => {
+          user.roles = [...rolesToUpdate.roles]
         })
       }
     })
   }
 
-  private getRolesArray(user){
-      const roles=[];
-      const userRoles=user.roles;
-      const avilableRoles: any[]=[
-        {name:'Admin', value:'Admin'},
-        {name:'Moderater', value:'Moderater'},
-        {name:'Member', value:'Member'}
-      ];
+  private getRolesArray(user) {
+    const roles = [];
+    const userRoles = user.roles;
+    const availableRoles: any[] = [
+      {name: 'Admin', value: 'Admin'},
+      {name: 'Moderator', value: 'Moderator'},
+      {name: 'Member', value: 'Member'}
+    ];
 
-      avilableRoles.forEach(role=>{
-        let isMatch= false;
-        for(const userRole of userRoles){
-          if(role.name===userRoles){
-            isMatch=true;
-            role.checked=true;
-            roles.push(role);
-            break;
-          }
+
+    availableRoles.forEach(role => {
+      let isMatch = false;
+      for (const userRole of userRoles) {
+        if (role.name === userRole) {
+          isMatch = true;
+          role.checked = true;
+          roles.push(role);
+          break;
         }
+      }
         if(!isMatch){
           role.checked=false;
           roles.push(role);

@@ -8,6 +8,10 @@ namespace API.Interfaces
 {
     public interface IMessageRepository
     {
+        void addGroup(Group group);
+        void RemoveConnection(Connection connection);
+        Task<Connection> GetConnection(string connectionId);
+        Task<Group> GetMessageGroup(string groupName);
         void addMessage(Message message);
         void deleteMessage(Message message);
         Task<Message> GetMessages(int id);

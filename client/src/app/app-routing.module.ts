@@ -23,17 +23,17 @@ const routes: Routes = [
     canActivate:[AuthGuard],
     children:[
       {path: 'members', component: MemberListComponent},
-      {path: 'members/edit', component:MemberEditComponent, canDeactivate:[PreventUnsavedChangesGuard]},
       {path: 'members/:username', component: MemberDetailComponent, resolve:{member:MemberDetailedResolver}},
+      {path: 'member/edit', component:MemberEditComponent, canDeactivate:[PreventUnsavedChangesGuard]},
       {path: 'lists', component:ListsComponent},
       {path: 'messages', component:MessagesComponent},
       {path: 'admin', component:AdminPanelComponent, canActivate:[AdminGuard]},
     ]
   },
   {path: 'error', component:TestErrorsComponent},
-  {path: 'not-found', component:NotFountComponent},
-  {path: 'server-error', component:ServerErrorComponent},
-    {path:'**', component:NotFountComponent, pathMatch:'full'}
+  {path: 'not-found', component: NotFountComponent},
+  {path: 'server-error', component: ServerErrorComponent},
+  {path: '**', component: NotFountComponent, pathMatch: 'full'},
 ];
 
 @NgModule({
